@@ -10,7 +10,7 @@ interface ValidationError {
   type: 'format' | 'size';
 }
 
-export default function UploadPage() {
+export default function UploadPage({ onNext }: { onNext?: () => void }) {
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const [error, setError] = useState<ValidationError | null>(null);
@@ -96,6 +96,8 @@ export default function UploadPage() {
     try {
       await new Promise(resolve => setTimeout(resolve, 1500));
       console.log('Processing file:', file.name);
+      // call parent navigation handler if provided
+      onNext?.();
     } finally {
       setIsLoading(false);
     }
