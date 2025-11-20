@@ -1,6 +1,10 @@
 import { Upload, ArrowRight } from 'lucide-react';
 
-export default function Hero() {
+interface HeroProps {
+  onGetStarted: () => void;
+}
+
+export default function Hero({ onGetStarted }: HeroProps) {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-teal-50 pt-16 pb-32">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
@@ -21,7 +25,10 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="group bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-200 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+            <button
+              onClick={onGetStarted}
+              className="group bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-200 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            >
               <Upload className="w-5 h-5" />
               Upload Floor Plan
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
