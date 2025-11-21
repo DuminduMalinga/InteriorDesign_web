@@ -7,6 +7,8 @@ import UploadPage from './pages/UploadPage';
 import DetectionPage from './pages/DetectionPage';
 import DesignPage from './pages/DesignPage';
 import FurniturePage from './pages/FurniturePage';
+import PreviewPage from './pages/PreviewPage';
+import FurniturePage from './pages/FurniturePage';
 import type { Page } from './types';
 
 function App() {
@@ -75,6 +77,36 @@ function App() {
           </div>
         </nav>
         <DesignPage onBack={() => handleNavigate('detection')} onNext={() => handleNavigate('furniture')} />
+      </div>
+    );
+  }
+
+  if (currentPage === 'furniture') {
+    return (
+      <div className="min-h-screen bg-white">
+        <nav className="bg-white border-b border-gray-200 px-4 sm:px-6 lg:px-8 py-4">
+          <div className="max-w-7xl mx-auto flex items-center justify-between">
+            <button
+              onClick={() => handleNavigate('home')}
+              className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent hover:opacity-80 transition-opacity"
+            >
+              FloorPlan3D
+            </button>
+            <div className="flex gap-3">
+              <button onClick={() => handleNavigate('design')} className="px-4 py-2 rounded-lg border">Back</button>
+              <button onClick={() => handleNavigate('home')} className="px-4 py-2 rounded-lg bg-blue-600 text-white">Home</button>
+            </div>
+          </div>
+        </nav>
+        <FurniturePage onBack={() => handleNavigate('design')} onNext={() => handleNavigate('export')} />
+      </div>
+    );
+  }
+
+  if (currentPage === 'export') {
+    return (
+      <div className="min-h-screen bg-white">
+        <PreviewPage onBack={() => handleNavigate('furniture')} onHome={() => handleNavigate('home')} />
       </div>
     );
   }
