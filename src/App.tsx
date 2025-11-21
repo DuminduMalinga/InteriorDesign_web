@@ -9,6 +9,7 @@ import DesignPage from './pages/DesignPage';
 import FurniturePage from './pages/FurniturePage';
 import PreviewPage from './pages/PreviewPage';
 import SettingsPage from './pages/SettingsPage';
+import NotFoundPage from './pages/NotFoundPage';
 import type { Page } from './types';
 
 function App() {
@@ -128,6 +129,14 @@ function App() {
           </div>
         </nav>
         <SettingsPage onBack={() => handleNavigate('home')} />
+      </div>
+    );
+  }
+
+  if (currentPage === 'notfound') {
+    return (
+      <div className="min-h-screen bg-white">
+        <NotFoundPage onHome={() => handleNavigate('home')} />
       </div>
     );
   }
