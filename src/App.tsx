@@ -8,7 +8,7 @@ import DetectionPage from './pages/DetectionPage';
 import DesignPage from './pages/DesignPage';
 import FurniturePage from './pages/FurniturePage';
 import PreviewPage from './pages/PreviewPage';
-import FurniturePage from './pages/FurniturePage';
+import SettingsPage from './pages/SettingsPage';
 import type { Page } from './types';
 
 function App() {
@@ -111,7 +111,7 @@ function App() {
     );
   }
 
-  if (currentPage === 'furniture') {
+  if (currentPage === 'settings') {
     return (
       <div className="min-h-screen bg-white">
         <nav className="bg-white border-b border-gray-200 px-4 sm:px-6 lg:px-8 py-4">
@@ -123,12 +123,11 @@ function App() {
               FloorPlan3D
             </button>
             <div className="flex gap-3">
-              <button onClick={() => handleNavigate('design')} className="px-4 py-2 rounded-lg border">Back</button>
-              <button onClick={() => handleNavigate('home')} className="px-4 py-2 rounded-lg bg-blue-600 text-white">Home</button>
+              <button onClick={() => handleNavigate('home')} className="px-4 py-2 rounded-lg border">Home</button>
             </div>
           </div>
         </nav>
-        <FurniturePage onBack={() => handleNavigate('design')} onNext={() => handleNavigate('export')} />
+        <SettingsPage onBack={() => handleNavigate('home')} />
       </div>
     );
   }
@@ -144,12 +143,16 @@ function App() {
             >
               FloorPlan3D
             </button>
-            <button
-              onClick={() => handleNavigate('upload')}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
-            >
-              Get Started
-            </button>
+            <div className="flex items-center">
+              <button
+                onClick={() => handleNavigate('upload')}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
+              >
+                Get Started
+              </button>
+
+              <button onClick={() => handleNavigate('settings')} className="ml-4 px-3 py-2 rounded-lg border">Settings</button>
+            </div>
           </div>
         </div>
       </nav>
